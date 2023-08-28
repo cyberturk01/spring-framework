@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.yigit</groupId>
-    <artifactId>Spring-01-Core-IoC</artifactId>
+    <artifactId>Spring-02-Core-Wiring</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
