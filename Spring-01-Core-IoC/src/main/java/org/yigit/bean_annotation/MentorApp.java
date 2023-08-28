@@ -8,6 +8,7 @@ public class MentorApp {
         ApplicationContext container= new AnnotationConfigApplicationContext(ConfigApp.class, ConfigAny.class);
 
         FullTimeMentor ft = container.getBean(FullTimeMentor.class);
+//        PartTimeMentor pt = container.getBean("p1",PartTimeMentor.class);
         PartTimeMentor pt = container.getBean(PartTimeMentor.class);
         ft.createAccount();
         pt.createAccount();
