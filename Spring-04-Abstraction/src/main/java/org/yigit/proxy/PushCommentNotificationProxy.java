@@ -1,17 +1,14 @@
 package org.yigit.proxy;
 
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import org.yigit.model.Comment;
 
 @Component
-//@Primary
-@Qualifier("EMAIL")
-public class EmailCommentNotification implements CommentNotificationProxy {
-
+@Qualifier("PUSH")
+public class PushCommentNotificationProxy implements CommentNotificationProxy{
     @Override
     public void sendComment(Comment comment) {
-        System.out.println("Sending Notification for comment:" + comment.getText());
+        System.out.println("Sending Push Notification for comment:" + comment.getText());
     }
 }

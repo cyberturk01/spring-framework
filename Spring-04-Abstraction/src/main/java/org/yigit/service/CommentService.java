@@ -1,5 +1,6 @@
 package org.yigit.service;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.yigit.model.Comment;
 import org.yigit.proxy.CommentNotificationProxy;
@@ -10,7 +11,7 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final CommentNotificationProxy notificationProxy;
 
-    public CommentService(CommentRepository commentRepository, CommentNotificationProxy notificationProxy) {
+    public CommentService(CommentRepository commentRepository,@Qualifier("PUSH") CommentNotificationProxy notificationProxy) {
         this.commentRepository = commentRepository;
         this.notificationProxy = notificationProxy;
     }
