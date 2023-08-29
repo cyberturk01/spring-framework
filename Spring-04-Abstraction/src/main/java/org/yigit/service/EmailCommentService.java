@@ -7,11 +7,11 @@ import org.yigit.proxy.CommentNotificationProxy;
 import org.yigit.repository.CommentRepository;
 
 @Component
-public class CommentService {
+public class EmailCommentService {
     private final CommentRepository commentRepository;
     private final CommentNotificationProxy notificationProxy;
 
-    public CommentService(CommentRepository commentRepository,@Qualifier("PUSH") CommentNotificationProxy notificationProxy) {
+    public EmailCommentService(CommentRepository commentRepository, @Qualifier("EMAIL") CommentNotificationProxy notificationProxy) {
         this.commentRepository = commentRepository;
         this.notificationProxy = notificationProxy;
     }
