@@ -29,6 +29,11 @@
         <th>Your Number:</th>
         <td th:text="${numbers}"/>
     </tr>
+    <tr>
+        <th>Student:</th>
+        <td th:text="${student.getFirstName()}"/>
+        <td th:text="${student.getLastName()}"/>
+    </tr>
     <tr th:each="number: ${numbers}">
         <td th:text="${number}" />
         <td th:text="${studentId}" />
