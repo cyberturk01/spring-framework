@@ -12,7 +12,7 @@ public class HomeController {
 
     @RequestMapping("/welcome")
     public String home2(){
-        return "welcome.html";
+        return "welcome.html"; //go to folder static and look for the file
     }
     @RequestMapping("/")
     public String home3(){

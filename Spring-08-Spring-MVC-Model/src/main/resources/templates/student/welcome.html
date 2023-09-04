@@ -1,0 +1,39 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HOME</title>
+</head>
+<body>
+<table style="border:solid 1px black;">
+    <thead>
+    <tr>
+        <th style="justify-content: center" th:text="'Welcome '+${name}"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>Your Course:</th>
+        <td th:text="${course}"/>
+    </tr>
+    <tbody>
+    <tr>
+        <th>Your Subject:</th>
+        <td th:text="${subject}"/>
+    </tr>
+    <tr>
+        <th>Your Id:</th>
+        <td th:text="${studentId}"/>
+    </tr>
+    <tr>
+        <th>Your Number:</th>
+        <td th:text="${numbers}"/>
+    </tr>
+    <tr th:each="number: ${numbers}">
+        <td th:text="${number}" />
+        <td th:text="${studentId}" />
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
