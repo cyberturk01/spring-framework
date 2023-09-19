@@ -5,9 +5,10 @@ public class MentorApp {
 
         FullTimeMentor fullTime = new FullTimeMentor();
         PartTimeMentor partTime = new PartTimeMentor();
+        VolunteerMentor volunteerMentor= new VolunteerMentor();
 
         //If new Mentor type comes this tightly coupling is not ideal
-        Mentor mentor = new Mentor(fullTime,partTime);
+        Mentor mentor = new Mentor(fullTime,partTime,volunteerMentor);
         mentor.manageAccount();
     }
 }

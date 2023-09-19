@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{index.page.title}"></title>
+</head>
+<body>
+    <p>Hello Students</p>
+    <h2 th:text="${students.get(0).firstName}"></h2>
+    <h2 th:text="${students.get(0).lastName}"></h2>
+
+    <!--Concatenation-->
+    <h2 th:text="'Welcome '+${students.get(0).lastName}"></h2>
+
+    <!--Link-->
+    <a th:href="@{https://gls-group.com}">GLS</a>
+    <br>
+    <a th:href="@{/student/info}">Info</a>
+    <br>
+    <!--Adding Parameters to Link-->
+    <a th:href="@{/student/info(id=3)}">Link 2</a>
+    <br>
+    <a th:href="@{/student/info(id=${students.get(0).getFirstName()})}">Link 3</a>
+
+    <!--Adding list-->
+    <ul>
+        <li th:each=" name : ${students}" th:text="${name.firstName}">Name</li>
+    </ul>
+
+    <!--Conditional Logic-->
+    <div th:text="${students.get(0).age}" > 25 ? "ELIGIBLE" : "NOT ELIGIBLE"></div>
+    <div>
+        <span th:if="${students.get(0).getState()} =='Arizona'">Arizona</span>
+        <span th:unless="${students.get(0).getState()} =='Not Arizona'">Arizona</span>
+    </div>
+
+</body>
+</html>

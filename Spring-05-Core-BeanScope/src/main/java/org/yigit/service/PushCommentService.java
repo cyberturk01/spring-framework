@@ -11,7 +11,7 @@ import org.yigit.repository.CommentRepository;
 
 @Component
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-@Lazy //creates when it is called the class otherwise doesnt instantiate(load) the class in the sprint container
+@Lazy //creates when it is called the class otherwise doesn't instantiate(load) the class in the sprint container
 public class PushCommentService {
     private final CommentRepository commentRepository;
     private final CommentNotificationProxy notificationProxy;
