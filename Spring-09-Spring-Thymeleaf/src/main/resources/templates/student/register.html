@@ -22,7 +22,7 @@
     <br>
     <a th:href="@{/student/info(id=${students.get(0).getFirstName()})}">Link 3</a>
 
-    <!--Adding list-->
+    <!--Iteration-->
     <ul>
         <li th:each=" name : ${students}" th:text="${name.firstName}">Name</li>
     </ul>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:align="center">
+    <h2>Mentor Registration Form!!!</h2>
+<!--//Action->points Which page will it land,
+    //Method->use post to do Post method
+    //Object->we need to create an object here mentor object-->
+    <form th:action="@{/mentor/confirm}" th:method="post" th:object="${mentor}">
+        <label>First Name: </label>
+        <input type="text" id="FirstName" th:field="*{firstName}"><br>
+        <label>Last Name: </label>
+        <input type="text" id="LastName" th:field="*{lastName}"><br>
+        <label>Email: </label>
+        <input type="email" id="Email" th:field="*{email}"><br>
+        <label>Graduated: </label>
+        <input type="checkbox" th:field="*{graduated}"><br>
+        <label>Gender: </label>
+        <input type="radio" value="Male" th:field="*{gender}">Male
+        <input type="radio" value="Female" th:field="*{gender}">Female<br>
+        <label>Batch Number: </label>
+        <select th:field="*{batch}">
+            <option th:each="theBatch : ${batchList}" th:value="${theBatch}" th:text="${theBatch}"></option>
+        </select><br>
+        <label>Gender: </label>
+        <textarea th:field="*{company}"></textarea>
+        <br>
+        <button type="submit">Register</button>
+    </form>
+</div>
+</body>
+</html>
