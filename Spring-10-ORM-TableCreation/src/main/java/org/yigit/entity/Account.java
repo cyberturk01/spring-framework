@@ -1,15 +1,16 @@
 package org.yigit.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
 
-@Entity
-@Data
+@MappedSuperclass
 public class Account {
+
+    //Working with parent child with @MappedSuperClass
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String owner;
     private BigDecimal balance;
