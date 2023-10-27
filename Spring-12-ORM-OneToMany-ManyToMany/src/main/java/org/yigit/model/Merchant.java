@@ -19,7 +19,8 @@ public class Merchant extends BaseEntity{
     private BigDecimal  commissionRate;
     private Integer payoutDelayCount;
 
-    @OneToMany(mappedBy = "merchant")
+    //Doesn't create merchantId but connects with Payment table which wil have many data
+    @OneToMany(mappedBy = "merchant", fetch = FetchType.LAZY)
     private List<Payment> paymentList;
 
     public Merchant(String name, String code, BigDecimal transactionFee, BigDecimal commissionRate, Integer payoutDelayCount) {
