@@ -10,18 +10,13 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @NoArgsConstructor
-public class Ticket extends BaseEntity{
-
-    private Integer seatNumber;
-    private Integer rowNumber;
-
+public class MovieCinema extends BaseEntity{
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime dateTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private MovieCinema movieCinema;
+    private Movie movie;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private User userAccount;
-
+    private Cinema cinema;
 }

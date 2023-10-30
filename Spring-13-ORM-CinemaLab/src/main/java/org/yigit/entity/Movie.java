@@ -1,10 +1,7 @@
 package org.yigit.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.yigit.enums.MovieState;
@@ -12,6 +9,7 @@ import org.yigit.enums.MovieType;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,8 +22,14 @@ public class Movie extends BaseEntity{
     @Column(columnDefinition = "text")
     private String summary;
     @Enumerated(EnumType.STRING)
-    private MovieType movieType;
+    private MovieType type;
     @Enumerated(EnumType.STRING)
-    private MovieState movieState;
+    private MovieState state;
     private BigDecimal price;
+
+    @ManyToMany
+    @JoinTable(name = "movie_genre_rel",
+    joinColumns = @JoinColumn(name = "movie_id"),
+    inverseJoinColumns = @JoinColumn(name = "genre_id"))
+    private List<Genre> genreList;
 }
