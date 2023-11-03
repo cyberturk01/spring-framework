@@ -58,6 +58,11 @@ public class DataGenerator implements CommandLineRunner {
         System.out.println(employeeRepository.findDistinctTop3BySalaryLessThan(140000));
         System.out.println(employeeRepository.findByEmailIsNull());
 
+        //JPQL
+        System.out.println("getEmployeeDetail: "+employeeRepository.getEmployeeDetail());
+        System.out.println("getEmployeeSalary: "+employeeRepository.getEmployeeSalary());
+
+
 
         System.out.println("--------Employee end here---------");
     }
