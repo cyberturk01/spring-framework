@@ -3,6 +3,7 @@ package org.yigit.bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.yigit.entity.Region;
+import org.yigit.repository.CourseRepository;
 import org.yigit.repository.DepartmentRepository;
 import org.yigit.repository.EmployeeRepository;
 import org.yigit.repository.RegionRepository;
@@ -16,11 +17,13 @@ public class DataGenerator implements CommandLineRunner {
     private final RegionRepository regionRepository;
     private final DepartmentRepository departmentRepository;
     private final EmployeeRepository employeeRepository;
+    private final CourseRepository courseRepository;
 
-    public DataGenerator(RegionRepository regionRepository, DepartmentRepository departmentRepository, EmployeeRepository employeeRepository) {
+    public DataGenerator(RegionRepository regionRepository, DepartmentRepository departmentRepository, EmployeeRepository employeeRepository, CourseRepository courseRepository) {
         this.regionRepository = regionRepository;
         this.departmentRepository = departmentRepository;
         this.employeeRepository = employeeRepository;
+        this.courseRepository = courseRepository;
     }
 
     @Override
@@ -53,7 +56,7 @@ public class DataGenerator implements CommandLineRunner {
         System.out.println(employeeRepository.findByLastNameIsStartingWith("Ber"));
         System.out.println(employeeRepository.findBySalaryIsGreaterThan(160000));
         System.out.println(employeeRepository.findBySalaryLessThan(120000));
-        System.out.println(employeeRepository.findByHireDateBetween(LocalDate.of(2019,03,12),LocalDate.of(2023,03,12)));
+        System.out.println(employeeRepository.findByHireDateBetween(LocalDate.of(2019,3,12),LocalDate.of(2023,3,12)));
         System.out.println(employeeRepository.findBySalaryGreaterThanEqualOrderBySalaryDesc(140000));
         System.out.println(employeeRepository.findDistinctTop3BySalaryLessThan(140000));
         System.out.println(employeeRepository.findByEmailIsNull());
@@ -61,9 +64,19 @@ public class DataGenerator implements CommandLineRunner {
         //JPQL
         System.out.println("getEmployeeDetail: "+employeeRepository.getEmployeeDetail());
         System.out.println("getEmployeeSalary: "+employeeRepository.getEmployeeSalary());
-
-
-
         System.out.println("--------Employee end here---------");
+
+        System.out.println("--------Derive Query Samples start here---------");
+
+        System.out.println("Category: " + courseRepository.findByCategory("Spring"));
+//        System.out.println("Category: " + courseRepository.getCategory("Spring"));
+        courseRepository.findByCategoryOrderByName("Spring").forEach(System.out::println);
+        System.out.println(courseRepository.existsByName("Getting Started with Spring Cloud Kubernetes"));
+        System.out.println(courseRepository.countByCategory("Spring"));
+        System.out.println(courseRepository.findByNameStartingWith("Getting Started"));
+        courseRepository.streamByCategory("Spring").forEach(System.out::println);
+
+        System.out.println("--------Derive Query Samples end here---------");
+
     }
 }
