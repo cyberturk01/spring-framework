@@ -74,8 +74,10 @@ public class DataGenerator implements CommandLineRunner {
         System.out.println(courseRepository.existsByName("Getting Started with Spring Cloud Kubernetes"));
         System.out.println(courseRepository.countByCategory("Spring"));
         System.out.println(courseRepository.findByNameStartingWith("Getting Started"));
-        courseRepository.streamByCategory("Spring").forEach(System.out::println);
-
+//        System.out.println(courseRepository.streamByCategory("Spring"));
+//
+        System.out.println(employeeRepository.getEmployeeSalaryNotEqual(15000));
+        System.out.println(employeeRepository.getEmployeeFirstNameLike("har"));
         System.out.println("--------Derive Query Samples end here---------");
 
     }
