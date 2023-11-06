@@ -37,8 +37,6 @@ public class Account extends BaseEntity{
                 ", city='" + city + '\'' +
                 ", age=" + age +
                 ", postalCode='" + postalCode + '\'' +
-                ", role=" + role +
-                ", user=" + user +
                 '}';
     }
 }

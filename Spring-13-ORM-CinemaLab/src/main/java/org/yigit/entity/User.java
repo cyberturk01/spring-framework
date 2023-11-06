@@ -4,6 +4,7 @@ package org.yigit.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "userAccount")
@@ -25,7 +26,6 @@ public class User extends BaseEntity{
                 "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", username='" + username + '\'' +
-                ", account=" + account +
                 '}';
     }
 }
