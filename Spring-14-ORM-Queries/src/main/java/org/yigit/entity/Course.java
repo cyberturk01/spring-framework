@@ -17,7 +17,7 @@ public class Course {
     @Column(name = "CATEGORY")
     private String category;
     @Column(name = "RATING")
-    private String rating;
+    private int rating;
     @Column(name = "DESCRIPTION")
     private String description;
 }

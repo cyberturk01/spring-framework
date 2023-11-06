@@ -1,7 +1,11 @@
 package org.yigit.repository;
 
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.yigit.entity.Department;
 import org.yigit.entity.Employee;
 
 import java.time.LocalDate;
@@ -75,4 +79,25 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     //Sorting in desc
     @Query("SELECT e from Employee e order by e.salary DESC ")
     List<Employee> getEmployeeSalaryOrderDesc();
+
+    //nativeQuery sample
+    //use table name as employees
+    @Query(value = "SELECT * from employees where salary = ?1 ",nativeQuery = true)
+    List<Employee> readEmployeeDetailBySalary(int salary);
+
+    @Query("SELECT e from Employee e where e.salary= :salary")
+    List<Employee> getEmployeeBySalary(@Param("salary") int salary);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE Employee e Set e.email='admin@email.com' where e.id= :id")
+    void updateEmployeeJPQL(@Param("id") int id);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE employees Set email='admin@email.com' where id= :id", nativeQuery = true)
+    void updateEmployeeNativeQuery(@Param("id") int id);
+
+
+
 }
