@@ -2,6 +2,7 @@ package org.yigit.bootstrap;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.yigit.entity.Location;
 import org.yigit.enums.UserRole;
 import org.yigit.repository.AccountRepository;
 import org.yigit.repository.CinemaRepository;
@@ -38,6 +39,10 @@ public class DataGenerator implements CommandLineRunner {
         System.out.println("**************Cinema Start Here **********");
         System.out.println(cinemaRepository.findByName("Hall 1 - EMPIRE"));
         System.out.println(cinemaRepository.findTop3OrderByNameContaining("EMPIRE"));
+        System.out.println(cinemaRepository.findAllByLocationCountry("United States"));
+        System.out.println(cinemaRepository.findAllCinemaByNameOrSponsoredName("Hall 4 - EMPIRE", "Quick Silver"));
+        System.out.println(cinemaRepository.findCinemaNameWithId(3L));
+
         System.out.println("**************Cinema End Here **********");
     }
 }

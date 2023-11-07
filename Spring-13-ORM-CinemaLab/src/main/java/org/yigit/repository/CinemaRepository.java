@@ -2,8 +2,10 @@ package org.yigit.repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.yigit.entity.Cinema;
+import org.yigit.entity.Location;
 
 import java.util.List;
 
@@ -18,14 +20,17 @@ public interface CinemaRepository extends JpaRepository<Cinema, Long> {
     //Write a derived query to read sorted the top 3 cinemas that contains a specific sponsored name
     List<Cinema> findTop3OrderByNameContaining(String name);
 
-
     //Write a derived query to list all cinemas in a specific country
+    List<Cinema> findAllByLocationCountry(String country);
 
     //Write a derived query to list all cinemas with a specific name or sponsored name
+    List<Cinema> findAllCinemaByNameOrSponsoredName(String name, String sponsoredName);
 
     // ------------------- JPQL QUERIES ------------------- //
 
     //Write a JPQL query to read the cinema name with a specific id
+    @Query("SELECT e from Cinema e where e.id=?1")
+    List<Cinema> findCinemaNameWithId(Long id);
 
     // ------------------- Native QUERIES ------------------- //
 
