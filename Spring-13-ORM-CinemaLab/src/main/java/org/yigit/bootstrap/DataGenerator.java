@@ -42,6 +42,8 @@ public class DataGenerator implements CommandLineRunner {
         System.out.println(cinemaRepository.findAllByLocationCountry("United States"));
         System.out.println(cinemaRepository.findAllCinemaByNameOrSponsoredName("Hall 4 - EMPIRE", "Quick Silver"));
         System.out.println(cinemaRepository.findCinemaNameWithId(3L));
+        System.out.println(cinemaRepository.findAllCinemaByNameContainsPattern("ALL 2"));
+//        System.out.println(cinemaRepository.findCinemaByLocationCountry("United States"));
 
         System.out.println("**************Cinema End Here **********");
     }

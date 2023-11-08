@@ -3,6 +3,7 @@ package org.yigit.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.yigit.entity.Cinema;
 import org.yigit.entity.Location;
@@ -35,8 +36,12 @@ public interface CinemaRepository extends JpaRepository<Cinema, Long> {
     // ------------------- Native QUERIES ------------------- //
 
     //Write a native query to read all cinemas by location country
+ /*   @Query(nativeQuery = true, value = "SELECT location.country FROM cinema ci left join location on ci.location_id = location.id  where location.country= ?1")
+    List<Cinema> findCinemaByLocationCountry(String country);*/
 
     //Write a native query to read all cinemas by name or sponsored name contains a specific pattern
+    @Query(nativeQuery = true, value = "SELECT * from cinema as c where c.name Like ?1% ")
+    List<Cinema> findAllCinemaByNameContainsPattern(String pattern);
 
     //Write a native query to sort all cinemas by name
 
