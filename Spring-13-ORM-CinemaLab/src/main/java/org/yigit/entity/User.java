@@ -2,13 +2,12 @@ package org.yigit.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
 @Table(name = "userAccount")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class User extends BaseEntity{
 
