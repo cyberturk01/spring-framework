@@ -31,7 +31,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     List<Account> findByAddressStartingWith(String word);
 
     //Write a derived query to sort the list of accounts with age
-    List<Account> findByOrderByAge();
+    List<Account> findByOrderByAgeAsc();
 
     // ------------------- JPQL QUERIES ------------------- //
 
@@ -40,8 +40,8 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     List<Account> findAllAccounts();
 
     //Write a JPQL query to list all admin accounts
-    @Query("SELECT e from Account e where e.role = ?1")
-    List<Account> findAllAdminAccounts(UserRole role);
+    @Query("SELECT e from Account e where e.role = 'ADMIN'")
+    List<Account> findAllAdminAccounts();
 
     //Write a JPQL query to sort all accounts with age
     @Query("SELECT e from Account e order by e.age")
@@ -56,11 +56,11 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     //Write a native query to read all accounts that a specific value can be containable in the name, address, country, state city
     @Query(nativeQuery = true, value =
             "SELECT * from account_details as e " +
-            "where e.name like :name% " +
-            "and e.address like :address% " +
-            "and e.country like :country% " +
-            "and e.state like :state% " +
-            "and e.city like :city%")
+            "where e.name ilike concat('%',:name,'%') " +
+            "or e.address ilike  concat('%',:address,'%') " +
+            "or e.country ilike  concat('%',:country,'%')" +
+            "or e.state ilike  concat('%',:state,'%')" +
+            "or e.city ilike  concat('%',:city%,'%')")
     List<Account> findAccountByNameOrAddressContaining(@Param("name") String name,
                                                        @Param("address") String address,
                                                         @Param("country") String country,
