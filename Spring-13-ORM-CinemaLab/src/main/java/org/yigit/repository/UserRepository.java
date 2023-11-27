@@ -54,9 +54,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     //Write a native query that returns all users in the range of ages?
     @Query(nativeQuery = true,
-            value = "select * from user_account as m " +
-                    "join account_details as ad ON m.account_details_id = ad.id " +
-                    "where ad.age between ?1 and ?2 ")
+            value = "SELECT m.id AS user_id, m.username, m.email, m.password,m.account_details_id, ad.id AS details_id, ad.age, ad.address, ad.name,ad.postal_code, ad.role, ad.state, ad.country, ad.city " +
+                    "FROM user_account AS m " +
+                    "JOIN account_details AS ad ON m.account_details_id = ad.id " +
+                    "WHERE ad.age BETWEEN ?1 AND ?2")
     List<User> fetchAllByInRange(Integer a, Integer b);
 
     //Write a native query to read a user by email?
