@@ -86,6 +86,8 @@ public class DataGenerator implements CommandLineRunner {
         System.out.println("All users: "+userRepository.fetchAllByInRange(34,42));
         System.out.println("All users: "+userRepository.fetchByEmail("josie_story@email.com"));
         System.out.println("All users: "+userRepository.getAllByEmail("josie_story@email.com"));
+        System.out.println("All users: "+userRepository.findByEmail("josie_story@email.com"));
+
 
 
     }
