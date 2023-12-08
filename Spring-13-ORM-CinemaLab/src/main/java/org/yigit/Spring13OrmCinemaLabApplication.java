@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
-import javax.sql.DataSource;
+import jakarta.sql.DataSource;
 
 @SpringBootApplication
 public class Spring13OrmCinemaLabApplication {

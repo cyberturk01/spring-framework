@@ -34,7 +34,7 @@ public class CourseController_ResponseEntity {
     }
 
     @PostMapping
-    public ResponseEntity<CourseDTO> createCourse(@RequestBody CourseDTO course){   //break till 8:30 pm
+    public ResponseEntity<CourseDTO> createCourse(@RequestBody CourseDTO course){
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .header("Operation","Create")
