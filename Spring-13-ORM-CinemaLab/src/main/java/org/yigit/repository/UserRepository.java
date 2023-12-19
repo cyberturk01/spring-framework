@@ -31,7 +31,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     //Write a JPQL query that returns a user read by email?
     @Query("select u from User u where u.email= ?1")
     User getByEmail(String email);
-
     //Write a JPQL query that returns a user read by username?
     @Query("select u from User u where u.username= ?1")
     User getByUsername(String username);
