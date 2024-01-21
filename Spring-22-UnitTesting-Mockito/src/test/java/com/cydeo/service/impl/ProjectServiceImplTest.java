@@ -62,14 +62,17 @@ class ProjectServiceImplTest {
     @Test
     void save_test() {
 
+        //Given
         ProjectDTO projectDTO = new ProjectDTO();
         Project project = new Project();
 
+        //when
         when(projectMapper.convertToEntity(projectDTO)).thenReturn(project);
         when(projectRepository.save(project)).thenReturn(project);
 
         projectService.save(projectDTO);
 
+        //then
         verify(projectRepository).save(project);
         verify(projectMapper).convertToEntity(any(ProjectDTO.class));
 
