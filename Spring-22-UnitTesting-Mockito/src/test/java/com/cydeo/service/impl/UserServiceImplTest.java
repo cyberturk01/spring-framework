@@ -26,7 +26,9 @@ class UserServiceImplTest {
 
         userService.deleteByUserName("mikesmith@cydeo.com");
 
+        verify(userRepository, atLeast(1)).findAll();
         verify(userRepository).deleteByUserName("mikesmith@cydeo.com");
+
 //        verify(userRepository, times(2)).deleteByUserName("mikesmith@cydeo.com");
 //        verify(userRepository, atLeastOnce()).deleteByUserName("mikesmith@cydeo.com");
 //        verify(userRepository, atLeast(5)).deleteByUserName("mikesmith@cydeo.com");
